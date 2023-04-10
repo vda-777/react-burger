@@ -37,7 +37,7 @@ export function BurgerIngredients(props) {
         
         <Tabs Scroling={Filtered}/>
         
-        <section className="Ingredients custom-scroll ml-4 mr-4" style={{display:"flex", overflowY: 'scroll'}}>
+        <section className="Ingredients custom-scroll ml-4 mr-4" style={{display:"flex", justifyContent:'center', overflowY: 'scroll'}}>
             <ul style={{display:'flex', flexWrap: 'wrap', justifyContent: 'center', height: '50%'}}>
                 {props.filteredData && Array.isArray(props.filteredData) &&
                     props.filteredData.map(({_id, name, type, proteins, fat, carbohydrates, calories, price, image, image_large}) => (                      
