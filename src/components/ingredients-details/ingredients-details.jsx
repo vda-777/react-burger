@@ -1,6 +1,7 @@
 import IngredientDetailCaption from '../ingredient-detail-caption/ingredient-detail-caption'
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import style from './ingredients-details.module.css'
+import {ingredientPropType} from '../../utils/type'
 
 export default function IngredientsDetails(props) {
     return (
@@ -24,13 +25,5 @@ export default function IngredientsDetails(props) {
 }
 
 IngredientsDetails.propTypes={
-
-  currentIngredient: PropTypes.shape({
-    image_large: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    calories: PropTypes.number.isRequired,
-    proteins: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    carbohydrates: PropTypes.number.isRequired
-  }).isRequired
+  currentIngredient: ingredientPropType.isRequired
 }

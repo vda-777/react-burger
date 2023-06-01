@@ -1,10 +1,10 @@
 import { useState} from 'react';
-import {createPortal} from 'react-dom';
 import { Button, ConstructorElement, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import style from './burger-constructor.module.css';
 import OrderDetails from '../order-details/order-details';
-import Modal from '../modal/modal';
+import ModalShow from '../modal-show/modal-show';
 import PropTypes from 'prop-types';
+import {ingredientPropType} from '../../utils/type'
 
 
 export default function BurgerConstructor(props) {
@@ -13,13 +13,19 @@ export default function BurgerConstructor(props) {
     let sumdata = data.reduce((sum, item) => sum + item.price, 0) + 200 + 200;
     return (
       <>
-      {showModal && createPortal(
+      {
+        showModal &&
+        <ModalShow onClose={() => setShowModal(false)}>
+          <OrderDetails numberOrder="034356"/>
+        </ModalShow>
+      }
+      {/*showModal && createPortal(
         //<OrderDetails onClose={() => setShowModal(false)} numberOrder="034356"/>,
         <Modal onClose={() => setShowModal(false)}>
           <OrderDetails numberOrder="034356"/>
         </Modal>,
         document.getElementById('modals')
-      )}
+      )*/}
       <section className={style.burgerConstructor + ' mt-25 ml-5'}>
         <section className={style.burgerConstructorSection + ' ml-4 mr-4'}>
           <span className={style.burgerConstructorElementsTopBottom + ' ml-6 mr-2'}>
@@ -66,19 +72,5 @@ export default function BurgerConstructor(props) {
 };
 
 BurgerConstructor.propTypes= {
-  allData: PropTypes.arrayOf(
-    PropTypes.shape({
-    _id: PropTypes.string,
-    name: PropTypes.string,
-    type: PropTypes.string,
-    proteins: PropTypes.number,
-    fat: PropTypes.number,
-    carbohydrates: PropTypes.number,
-    calories: PropTypes.number,
-    price: PropTypes.number,
-    image: PropTypes.string,
-    image_mobile: PropTypes.string,
-    image_large: PropTypes.string,
-    __v: PropTypes.number
-  }))
+  allData: PropTypes.arrayOf(ingredientPropType)
 };

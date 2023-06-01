@@ -1,8 +1,7 @@
 import { useEffect, useState} from 'react';
-import {createPortal} from 'react-dom';
 import {Tabs} from '../burger-ingredients-tabs/burger-ingredients-tabs'
 import IngredientsDetails from '../ingredients-details/ingredients-details'
-import Modal from '../modal/modal'
+import ModalShow from '../modal-show/modal-show'
 import { CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-components'
 import PropTypes from 'prop-types';
 import {ingredientPropType} from '../../utils/type'
@@ -39,13 +38,19 @@ export default function BurgerIngredients(props) {
 
   return (
     <>
-    {showModal && createPortal(
+      {
+        showModal &&
+        <ModalShow onClose={() => setShowModal(false)} header='Детали ингредиента'>
+          <IngredientsDetails onClose={() => setShowModal(false)} currentIngredient={currentItem}/>
+        </ModalShow>
+      }
+    {/*showModal && createPortal(
       //<IngredientsDetails onClose={() => setShowModal(false)} currentIngredient={currentItem}/>,
       <Modal onClose={() => setShowModal(false)} header='Детали ингредиента'>
         <IngredientsDetails onClose={() => setShowModal(false)} currentIngredient={currentItem}/>
       </Modal>,    
       document.getElementById('modals')
-    )}
+    )*/}
     <section className={style.BurgerIngredients + ' mr-5'}>
         <span className={style.BurgerIngredientsTitle + ' mt-10 mb-5 text text_type_main-large'}>Собери бургер</span>        
         <Tabs Scroling={Filtered}/>

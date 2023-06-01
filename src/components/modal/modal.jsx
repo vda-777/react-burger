@@ -10,12 +10,12 @@ export default function Modal(props) {
     refModalOverlay.current.focus();
   },[]);
 
-  return (    
+  return (
     <div className={style.modalOverlay}
       tabIndex={0}
       ref={refModalOverlay}
       onClick={props.onClose}
-      onKeyDown={(e)=>{if(e.key === 'Escape') props.onClose();}}
+      onKeyDown={(e)=>{if(e.key === 'Escape') props.onClose()}}
     >
         <div className={style.modalWindow}
           onClick={(e)=>{e.stopPropagation()}}
