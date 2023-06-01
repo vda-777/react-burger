@@ -1,0 +1,34 @@
+.burgerConstructor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 48%;
+}
+.burgerConstructorSection{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.burgerConstructorElementsTopBottom{
+    align-self: flex-end;
+}
+.burgerConstructorElementsSection{
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+.burgerConstructorElement{
+    display: flex;
+    gap: 10px;
+}
+.burgerConstructorElementIcon{
+    align-self: center;
+}
+
+.burgerConstructorPriceButtonSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    height: 64px;
+}

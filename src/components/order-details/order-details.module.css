@@ -1,0 +1,13 @@
+/*.numberOrder {
+  display: flex;
+  align-self: center;
+}
+.numberOrderCaption {
+  display: flex;
+  align-self: center;
+}*/
+
+.imageCheckMark {
+  height: 120px;
+  width: 120px;
+}

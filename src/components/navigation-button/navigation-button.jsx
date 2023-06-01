@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export function NavigationButton(props) {
   return (    
         <div className={props.navigationButtonClass}>
-            <a href='#' style={{display: 'flex', textDecoration:'none'}}> {/*onclick='null'*/}
+            <a href='#' > {/*onclick='null'*/}
                 {
                     props.icon      === 'BurgerIcon'    ? <BurgerIcon   type={props.type} />
                     : props.icon    === 'ListIcon'      ? <ListIcon     type={props.type} />
@@ -12,10 +12,9 @@ export function NavigationButton(props) {
                     : 'None'
                 }
                 {
-                    props.type    === 'primary' ? <p className='pl-2 text text_type_main-small' style={{color:'#F2F2F3'}}> {props.Text}</p>
-                    : props.type  === 'secondary' ? <p className='pl-2 text text_type_main-small' style={{color:'#8585AD'}}> {props.Text}</p>
-                    : <p className='pl-2 text text_type_main-small' style={{color:'#FFFFFF'}}> {props.Text}</p>
-                    /*<p className={`text text_type_main-small ${Props.TextActive} pl-2`}> {Props.Text}</p>*/
+                    props.type    === 'primary' ? <span className='ml-2 text text_type_main-small text_color_primary'> {props.Text}</span>
+                    : props.type  === 'secondary' ? <span className='ml-2 text text_type_main-small text_color_inactive'> {props.Text}</span>
+                    : <span className='pl-2 text text_type_main-small'> {props.Text}</span>
                 }
             </a>
         </div>
@@ -27,4 +26,4 @@ NavigationButton.propTypes={
     icon: PropTypes.string,
     type: PropTypes.string,
     Text: PropTypes.string,
-  }
+}

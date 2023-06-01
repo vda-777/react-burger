@@ -1,17 +1,28 @@
-import { useState} from 'react';
+import { useEffect, useState} from 'react';
 import {createPortal} from 'react-dom';
-import { Tabs } from '../burger-ingredients-tabs/burger-ingredients-tabs'
+import {Tabs} from '../burger-ingredients-tabs/burger-ingredients-tabs'
 import IngredientsDetails from '../ingredients-details/ingredients-details'
+import Modal from '../modal/modal'
 import { CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-components'
 import PropTypes from 'prop-types';
+import {ingredientPropType} from '../../utils/type'
+import style from './burger-ingredients.module.css'
 
-export function BurgerIngredients(props) {  
+
+export default function BurgerIngredients(props) {  
+    const [filteredData, setFilteredData] = useState([]);
+
     const Filtered = (type) => {
         if(typeof type === 'undefined')
-          props.setFilteredData(props.allData.filter((data) => data.type.includes('bun')))
+          setFilteredData(props.allData.filter((data) => data.type.includes('bun')))
         else
-          props.setFilteredData(props.allData.filter((data) => data.type.includes(type)))
+          setFilteredData(props.allData.filter((data) => data.type.includes(type)))
     }
+    useEffect(()=> {      
+      //Filtered('bun');
+      setFilteredData(props.allData.filter((data) => data.type.includes('bun')))
+    },
+    [props.allData])
 
     const [showModal, setShowModal] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
@@ -29,66 +40,40 @@ export function BurgerIngredients(props) {
   return (
     <>
     {showModal && createPortal(
-      <IngredientsDetails onClose={() => setShowModal(false)} currentIngredient={currentItem}/>,
-      document.body
+      //<IngredientsDetails onClose={() => setShowModal(false)} currentIngredient={currentItem}/>,
+      <Modal onClose={() => setShowModal(false)} header='Детали ингредиента'>
+        <IngredientsDetails onClose={() => setShowModal(false)} currentIngredient={currentItem}/>
+      </Modal>,    
+      document.getElementById('modals')
     )}
-    <section className='BurgerIngredients mr-5' style={{display: 'flex', flexDirection: 'column', minWidth: '48%', maxWidth: '48%' }}>
-        <p className='BurgerIngredientsTitle mt-10 mb-5 text text_type_main-large' style={{display: 'flex', justifyContent: 'left'}}>Собери бургер</p>
-        
+    <section className={style.BurgerIngredients + ' mr-5'}>
+        <span className={style.BurgerIngredientsTitle + ' mt-10 mb-5 text text_type_main-large'}>Собери бургер</span>        
         <Tabs Scroling={Filtered}/>
-        
-        <section className="Ingredients custom-scroll ml-4 mr-4" style={{display:"flex", justifyContent:'center', overflowY: 'scroll'}}>
-            <ul style={{display:'flex', flexWrap: 'wrap', justifyContent: 'center', height: '50%'}}>
-                {props.filteredData && Array.isArray(props.filteredData) &&
-                    props.filteredData.map(({_id, name, type, proteins, fat, carbohydrates, calories, price, image, image_large}) => (                      
-                      /*<li key={_id} className="Ingredient mr-6 mb-8" style={{listStyleType: `none`, maxWidth:'50%', alignContent:'stretch'}} onClick={(event) => setShowModal(true)}>*/
-                        <li key={_id} className="Ingredient mr-6 mb-8" style={{listStyleType: `none`, maxWidth:'50%', alignContent:'stretch'}} onClick={(event) => {ingredientClick({
+            <ul className={style.BurgerIngredientsElements +' custom-scroll ml-4 mr-4'}>
+                {filteredData && Array.isArray(filteredData) &&
+                    filteredData.map(({_id, name, type, proteins, fat, carbohydrates, calories, price, image, image_large}) => (                      
+                        <li key={_id} className={style.BurgerIngredientsElement + ' mr-6 mb-8'} onClick={(event) => {ingredientClick({
                           name, proteins, fat, carbohydrates, calories, image_large
                         }); setShowModal(true);}}
                         >
-                            <div style={{position:'relative'}}><Counter count={1} size="small"/></div>
-                            <img className="ml-4 mr-4" style={{display:'flex',justifyContent:'center'}} src={image} alt={name}/>
-                            <p className="text text_type_digits-default mt-1 mb-1" style={{display:'flex',justifyContent:'center'}}>{price}<span className='ml-2'></span><CurrencyIcon type="primary"/></p>
-                            <p className="text text_type_main-small" style={{display:'flex', justifyContent:'center', maxWidth:'272px'}}>{name}</p>
+                            <span className={style.BurgerIngredientsElementCounter}><Counter count={1} size="small"/></span>
+                            <img className={style.BurgerIngredientsElementImage + ' ml-4 mr-4'} src={image} alt={name}/>
+                            <span className={style.BurgerIngredientsElementPrice + ' text text_type_digits-default mt-1 mb-1'}>
+                              {price}
+                              <span className='ml-2'>
+                                <CurrencyIcon type="primary"/>
+                              </span>
+                            </span>
+                            <span className={style.BurgerIngredientsElementCaption + ' text text_type_main-small'}>{name}</span>
                         </li>
                         ))}
             </ul>
-      </section>
     </section>
     </>
   );
 };
 
 BurgerIngredients.propTypes= {
-  allData: PropTypes.arrayOf(
-    PropTypes.shape({
-    _id: PropTypes.string,
-    name: PropTypes.string,
-    type: PropTypes.string,
-    proteins: PropTypes.number,
-    fat: PropTypes.number,
-    carbohydrates: PropTypes.number,
-    calories: PropTypes.number,
-    price: PropTypes.number,
-    image: PropTypes.string,
-    image_mobile: PropTypes.string,
-    image_large: PropTypes.string,
-    __v: PropTypes.number
-  })),
-  filteredData: PropTypes.arrayOf(
-    PropTypes.shape({
-    _id: PropTypes.string,
-    name: PropTypes.string,
-    type: PropTypes.string,
-    proteins: PropTypes.number,
-    fat: PropTypes.number,
-    carbohydrates: PropTypes.number,
-    calories: PropTypes.number,
-    price: PropTypes.number,
-    image: PropTypes.string,
-    image_mobile: PropTypes.string,
-    image_large: PropTypes.string,
-    __v: PropTypes.number
-  })),
+  allData: PropTypes.arrayOf(ingredientPropType),
   setFilteredData: PropTypes.func
 };

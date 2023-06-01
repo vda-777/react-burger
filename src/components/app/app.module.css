@@ -1,0 +1,6 @@
+.context{
+    display: flex;
+    justify-content: center;
+    max-height: 87vh;
+    min-height: 87vh;
+}

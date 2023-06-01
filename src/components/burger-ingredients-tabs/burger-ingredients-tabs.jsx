@@ -2,12 +2,14 @@ import {useState} from 'react'
 import React from 'react'
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import PropTypes from 'prop-types';
+import style from './burger-ingredients-tabs.module.css'
+
 
 export const Tabs = (props) => {
     const [current, setCurrent] = useState('Булки')    
     return (
         <>            
-            <div className='BurgerIngredientsTabs' style={{display: "flex", justifyContent:'center'}}>
+            <div className={style.BurgerIngredientsTabs}>
                 <Tab value="Булки" active={current === 'Булки'} onClick={()=>{props.Scroling('bun'); setCurrent('Булки');}}>
                     Булки
                 </Tab>
@@ -18,7 +20,7 @@ export const Tabs = (props) => {
                     Начинки
                 </Tab>
             </div>
-            <p className='IngredientsHeader mt-10 mb-6 text text_type_main-medium'>{current}</p>
+            <span className='mt-10 mb-6 text text_type_main-medium'>{current}</span>
         </>
     )
 }

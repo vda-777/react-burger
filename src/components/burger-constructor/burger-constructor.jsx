@@ -1,22 +1,28 @@
 import { useState} from 'react';
 import {createPortal} from 'react-dom';
 import { Button, ConstructorElement, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import OrderDetails from '../order-details/order-details'
+import style from './burger-constructor.module.css';
+import OrderDetails from '../order-details/order-details';
+import Modal from '../modal/modal';
 import PropTypes from 'prop-types';
 
-export function BurgerConstructor(props) {
+
+export default function BurgerConstructor(props) {
     const [showModal, setShowModal] = useState(false);
     const data = props.allData.filter((data) => !data.type.includes('bun'));
     let sumdata = data.reduce((sum, item) => sum + item.price, 0) + 200 + 200;
     return (
       <>
       {showModal && createPortal(
-        <OrderDetails onClose={() => setShowModal(false)} numberOrder="034356"/>,
-        document.body
+        //<OrderDetails onClose={() => setShowModal(false)} numberOrder="034356"/>,
+        <Modal onClose={() => setShowModal(false)}>
+          <OrderDetails numberOrder="034356"/>
+        </Modal>,
+        document.getElementById('modals')
       )}
-      <section className='BurgerConstructor mt-25 ml-5' style={{display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '48%'}}>
-        <section className='ml-4 mr-4' style={{display: 'flex', flexDirection: 'column', overflow: 'hidden'}}>
-          <span className='ml-6 mr-2'style={{alignSelf: 'end'}}>
+      <section className={style.burgerConstructor + ' mt-25 ml-5'}>
+        <section className={style.burgerConstructorSection + ' ml-4 mr-4'}>
+          <span className={style.burgerConstructorElementsTopBottom + ' ml-6 mr-2'}>
             <ConstructorElement
             type="top"
             isLocked={true}
@@ -25,11 +31,11 @@ export function BurgerConstructor(props) {
             thumbnail={'https://code.s3.yandex.net/react/code/bun-02.png'}
             />
           </span>
-            <ul className="custom-scroll" style={{display:"flex", flexDirection: 'column', overflow: 'auto'}}>
+            <ul className={style.burgerConstructorElementsSection + ' custom-scroll'} >
               {data && Array.isArray(data) &&
                 data.map(({_id, name, price, image}) => (
-                  <li key={_id} className='mt-1' style={{display: 'flex', gap: '10px'}}>
-                    <span style={{alignSelf: 'center'}}> <DragIcon type="primary" /></span>
+                  <li key={_id} className={style.burgerConstructorElement +' mt-1'}>
+                    <span className={style.burgerConstructorElementIcon}> <DragIcon type="primary" /></span>
                     <ConstructorElement
                         text={name}
                         price={price}
@@ -38,7 +44,7 @@ export function BurgerConstructor(props) {
                   </li>
               ))}
             </ul>
-          <span className='ml-6 mr-2' style={{alignSelf: 'end'}}>
+          <span className={style.burgerConstructorElementsTopBottom + ' ml-6 mr-2'}>
           <ConstructorElement 
             type="bottom"
             isLocked={true}
@@ -47,12 +53,12 @@ export function BurgerConstructor(props) {
             thumbnail={'https://code.s3.yandex.net/react/code/bun-02.png'} //style={{transform: 'rotate(90deg)'}}
           />
           </span>
-          <div className='mt-10' style={{display:'flex', flexDirection: 'row',  justifyContent:'end', alignItems: 'center', height: '64px'}}>
+          <section className={style.burgerConstructorPriceButtonSection + ' mt-10'}>
             <span className="text text_type_main-large">{sumdata}
-              <span className='ml-2 mr-10' style={{justifyContent: 'center'}}><CurrencyIcon type="primary"/></span>              
+              <span className='ml-2 mr-10'><CurrencyIcon type="primary"/></span>
             </span>
             <Button htmlType="button" type="primary" size="medium" onClick={(event) => setShowModal(true)}>Оформить заказ</Button>
-          </div>
+          </section>
         </section>
       </section>
       </>
