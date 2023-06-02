@@ -1,7 +1,7 @@
 import { useEffect, useState} from 'react';
 import {Tabs} from '../burger-ingredients-tabs/burger-ingredients-tabs'
 import IngredientsDetails from '../ingredients-details/ingredients-details'
-import ModalShow from '../modal-show/modal-show'
+import Modal from '../modal/modal'
 import { CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-components'
 import PropTypes from 'prop-types';
 import {ingredientPropType} from '../../utils/type'
@@ -40,9 +40,9 @@ export default function BurgerIngredients(props) {
     <>
       {
         showModal &&
-        <ModalShow onClose={() => setShowModal(false)} header='Детали ингредиента'>
+        <Modal onClose={() => setShowModal(false)} header='Детали ингредиента'>
           <IngredientsDetails onClose={() => setShowModal(false)} currentIngredient={currentItem}/>
-        </ModalShow>
+        </Modal>
       }
     {/*showModal && createPortal(
       //<IngredientsDetails onClose={() => setShowModal(false)} currentIngredient={currentItem}/>,
@@ -54,7 +54,7 @@ export default function BurgerIngredients(props) {
     <section className={style.BurgerIngredients + ' mr-5'}>
         <span className={style.BurgerIngredientsTitle + ' mt-10 mb-5 text text_type_main-large'}>Собери бургер</span>        
         <Tabs Scroling={Filtered}/>
-            <ul className={style.BurgerIngredientsElements +' custom-scroll ml-4 mr-4'}>
+            <ul className={style.BurgerIngredientsElements +' custom-scroll ml-4 mr-4'}> 
                 {filteredData && Array.isArray(filteredData) &&
                     filteredData.map(({_id, name, type, proteins, fat, carbohydrates, calories, price, image, image_large}) => (                      
                         <li key={_id} className={style.BurgerIngredientsElement + ' mr-6 mb-8'} onClick={(event) => {ingredientClick({

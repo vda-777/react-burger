@@ -2,7 +2,7 @@ import { useState} from 'react';
 import { Button, ConstructorElement, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import style from './burger-constructor.module.css';
 import OrderDetails from '../order-details/order-details';
-import ModalShow from '../modal-show/modal-show';
+import Modal from '../modal/modal';
 import PropTypes from 'prop-types';
 import {ingredientPropType} from '../../utils/type'
 
@@ -15,9 +15,9 @@ export default function BurgerConstructor(props) {
       <>
       {
         showModal &&
-        <ModalShow onClose={() => setShowModal(false)}>
+        <Modal onClose={() => setShowModal(false)}>
           <OrderDetails numberOrder="034356"/>
-        </ModalShow>
+        </Modal>
       }
       {/*showModal && createPortal(
         //<OrderDetails onClose={() => setShowModal(false)} numberOrder="034356"/>,

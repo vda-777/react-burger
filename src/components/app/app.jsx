@@ -40,7 +40,7 @@ function App() {
   }, [])
   
   return (
-    <>
+    <div className={style.page}>
       <Header />
 
       <main className={style.context}>
@@ -55,7 +55,7 @@ function App() {
 
         <BurgerConstructor allData={allData}/>
       </main>
-    </>
+    </div>    
   );
 }
 
