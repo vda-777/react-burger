@@ -1,8 +1,8 @@
 .modalOverlay
 {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /*justify-content: center;
+    align-items: center;*/
 
     position: fixed;
     top: 0;
@@ -11,43 +11,5 @@
     height: 100%;
 
     background-color: rgba(0,0,0,0.55);
-    z-index: 2;
-}
-.modalWindow {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-Items: start;
-
-    box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
-    background-color: #1C1C21;
-    border: 1px solid rgba(76, 76, 255, 0.2);
-    border-radius: 40px;
-    width: 720px;
-}
-.modalWindowHeaderNoCaption {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-Items: start;
-    height: 88px;
-    width: 100%;
-}
-.modalWindowHeaderCaption{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-
-.modalWindowContent{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-Items: center;
-
-    width: 100%;
+    z-index: 1;
 }
