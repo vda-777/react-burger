@@ -32,3 +32,11 @@
     align-items: center;
     height: 64px;
 }
+.modalWindowHeaderNoCaption {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-Items: start;
+    height: 88px;
+    width: 100%;
+}

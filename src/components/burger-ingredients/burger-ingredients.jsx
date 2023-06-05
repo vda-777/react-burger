@@ -6,6 +6,7 @@ import { CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-c
 import PropTypes from 'prop-types';
 import {ingredientPropType} from '../../utils/type'
 import style from './burger-ingredients.module.css'
+import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 
 export default function BurgerIngredients(props) {  
@@ -40,7 +41,12 @@ export default function BurgerIngredients(props) {
     <>
       {
         showModal &&
-        <Modal onClose={() => setShowModal(false)} header='Детали ингредиента'>
+        <Modal onClose={() => setShowModal(false)} header={/*'Детали ингредиента'*/
+          <div className={style.modalWindowHeaderCaption + ' mt-10'}>
+            <p className="ml-10 text text_type_digits-medium">Детали ингредиента</p>
+            <span className='mr-10'><CloseIcon type="primary" onClick={() => setShowModal(false)}/></span>
+          </div>
+        }>
           <IngredientsDetails onClose={() => setShowModal(false)} currentIngredient={currentItem}/>
         </Modal>
       }
