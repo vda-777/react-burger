@@ -6,7 +6,14 @@ import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import style from './modal.module.css';
 
 
-export default function Modal(props) {
+export default function Modal(props) {  
+  React.useEffect(() => {
+    document.addEventListener("keydown", (e)=>{if(e.key === 'Escape') props.onClose()});
+    return()=>{
+      document.removeEventListener("keydown", (e)=>{if(e.key === 'Escape') props.onClose()});
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
         {createPortal(
@@ -21,22 +28,6 @@ export default function Modal(props) {
                 <span className='mr-10'><CloseIcon type="primary" onClick={props.onClose}/></span>
               </div>
         
-            {
-              //props.header
-            /*
-              props.header === undefined 
-              ?
-              <div className={style.modalWindowHeaderNoCaption}>
-                  <span className='mt-10 ml-10'><p className="text text_type_digits-medium">{props.header}</p></span>
-                  <span className='mt-15 mr-10'><CloseIcon type="primary" onClick={props.onClose}/></span>
-              </div>
-              :
-                <div className={style.modalWindowHeaderCaption + ' mt-10'}>
-                  <p className="ml-10 text text_type_digits-medium">Детали ингредиента</p>
-                  <span className='mr-10'><CloseIcon type="primary" onClick={props.onClose}/></span>
-                </div>
-              */
-            }
               <div className={style.modalWindowContent}>
                 {props.children === undefined ? <p className="text text_type_digits-medium">Просто окно ;-)</p> : props.children}
               </div>
@@ -51,6 +42,4 @@ export default function Modal(props) {
 ModaOverlay.propTypes={
   onClose: PropTypes.func.isRequired,
   header: PropTypes.string
-  //showModal: PropTypes.bool.isRequired
-  //children: PropTypes.childrenl
 }

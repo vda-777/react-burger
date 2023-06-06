@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 import style from './modal-overlay.module.css';
 
 export default function ModaOverlay(props) {
-  const refModalOverlay = React.useRef();
-  React.useEffect(()=>{
+  //const refModalOverlay = React.useRef();
+  /*React.useEffect(()=>{
     refModalOverlay.current.focus();
-  },[]);
+  },[]);*/
 
   return (
     <div className={style.modalOverlay}
       tabIndex={0}
-      ref={refModalOverlay}
+      //ref={refModalOverlay}
       onClick={props.onClose}
-      onKeyDown={(e)=>{if(e.key === 'Escape') props.onClose()}}
+      //onKeyDown={(e)=>{if(e.key === 'Escape') props.onClose()}}
     />       
     //</div>
   );    
