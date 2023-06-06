@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ModaOverlay from '../modal-overlay/modal-overlay';
 import {createPortal} from 'react-dom';
-//import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import style from './modal.module.css';
 
 
@@ -16,9 +16,13 @@ export default function Modal(props) {
             //onClick={(e)=>{e.stopPropagation()}}
             //onKeyDown={(e)=>{e.stopPropagation()}}
             >
+              <div className={style.modalWindowHeaderCaption + ' mt-10'}>
+                <p className="ml-10 text text_type_digits-medium">{props.header}</p>
+                <span className='mr-10'><CloseIcon type="primary" onClick={props.onClose}/></span>
+              </div>
         
             {
-              props.header
+              //props.header
             /*
               props.header === undefined 
               ?

@@ -17,6 +17,14 @@
     width: 720px;
     z-index: 2;
 }
+.modalWindowHeaderCaption {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-Items: start;
+    height: 88px;
+    width: 100%;
+}
 /*.modalWindowHeaderNoCaption {
     display: flex;
     flex-direction: row;

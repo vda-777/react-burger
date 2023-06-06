@@ -47,10 +47,10 @@
     /*align-self: center;*/
     text-align: center;
 }
-.modalWindowHeaderCaption{
+/*.modalWindowHeaderCaption{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-}
+}*/

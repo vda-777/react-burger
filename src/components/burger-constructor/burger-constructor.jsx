@@ -5,7 +5,6 @@ import OrderDetails from '../order-details/order-details';
 import Modal from '../modal/modal';
 import PropTypes from 'prop-types';
 import {ingredientPropType} from '../../utils/type'
-import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 
 export default function BurgerConstructor(props) {
@@ -16,12 +15,7 @@ export default function BurgerConstructor(props) {
       <>
       {
         showModal &&
-        <Modal onClose={() => setShowModal(false)} header={
-          <div className={style.modalWindowHeaderNoCaption}>
-            <span className='mt-10 ml-10'><p className="text text_type_digits-medium">{props.header}</p></span>
-            <span className='mt-15 mr-10'><CloseIcon type="primary" onClick={() => setShowModal(false)}/></span>
-          </div>}>
-
+        <Modal onClose={() => setShowModal(false)}>
           <OrderDetails numberOrder="034356"/>
         </Modal>
       }
