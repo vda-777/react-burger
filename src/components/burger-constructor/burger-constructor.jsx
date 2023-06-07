@@ -19,13 +19,7 @@ export default function BurgerConstructor(props) {
           <OrderDetails numberOrder="034356"/>
         </Modal>
       }
-      {/*showModal && createPortal(
-        //<OrderDetails onClose={() => setShowModal(false)} numberOrder="034356"/>,
-        <Modal onClose={() => setShowModal(false)}>
-          <OrderDetails numberOrder="034356"/>
-        </Modal>,
-        document.getElementById('modals')
-      )*/}
+
       <section className={style.burgerConstructor + ' mt-25 ml-5'}>
         <section className={style.burgerConstructorSection + ' ml-4 mr-4'}>
           <span className={style.burgerConstructorElementsTopBottom + ' ml-6 mr-2'}>

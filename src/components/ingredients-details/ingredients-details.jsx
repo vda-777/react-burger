@@ -1,5 +1,4 @@
 import IngredientDetailCaption from '../ingredient-detail-caption/ingredient-detail-caption'
-//import PropTypes from 'prop-types';
 import style from './ingredients-details.module.css'
 import {ingredientPropType} from '../../utils/type'
 

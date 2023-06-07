@@ -8,7 +8,6 @@ import BurgerConstructor from '../burger-constructor/burger-constructor';
 function App() {
   const apiUrl = 'https://norma.nomoreparties.space/api/ingredients';
   const [allData, setAllData] = useState([]);
-  //const [filteredData, setFilteredData] = useState(allData);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
     
@@ -23,10 +22,6 @@ function App() {
         }
         const resJson = await response.json();
         setAllData(resJson.data);
-        //setFilteredData(resJson.data);
-        //if(allData.count > 0) {setFilteredData(allData.filter((data) => data.type.includes('bun')));}
-        //else {setFilteredData(allData);}
-  
         setError(null);
       } catch(err) {
         setError(err.message);
@@ -48,10 +43,7 @@ function App() {
         {error && (<p>{`Упс. Вознилка проблема с получением данных с сервера. Сообщение об ощибке: ${error}`}</p>)}
         {error && (console.log(`feching error - ${error}`))}
         
-        {/*<BurgerIngredients setFilteredData={setFilteredData} filteredData={filteredData} allData={allData} />*/}
-        {<BurgerIngredients /*setFilteredData={setFilteredData} 
-          filteredData={allData.filter((data) => data.type.includes('bun'))}*/
-          allData={allData} />}
+        {<BurgerIngredients allData={allData} />}
 
         <BurgerConstructor allData={allData}/>
       </main>

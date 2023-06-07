@@ -18,7 +18,6 @@ export default function BurgerIngredients(props) {
           setFilteredData(props.allData.filter((data) => data.type.includes(type)))
     }
     useEffect(()=> {      
-      //Filtered('bun');
       setFilteredData(props.allData.filter((data) => data.type.includes('bun')))
     },
     [props.allData])
@@ -26,14 +25,10 @@ export default function BurgerIngredients(props) {
     const [showModal, setShowModal] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
     const ingredientClick = (props) => {
-      //let updatedValue = {};
-      //updatedValue = props;
       setCurrentItem(currentItem => ({
         ...currentItem,
-        //...updatedValue
         ...props
       }));
-      //setShowModal(true);
     };
 
   return (
@@ -44,13 +39,6 @@ export default function BurgerIngredients(props) {
           <IngredientsDetails onClose={() => setShowModal(false)} currentIngredient={currentItem}/>
         </Modal>
       }
-    {/*showModal && createPortal(
-      //<IngredientsDetails onClose={() => setShowModal(false)} currentIngredient={currentItem}/>,
-      <Modal onClose={() => setShowModal(false)} header='Детали ингредиента'>
-        <IngredientsDetails onClose={() => setShowModal(false)} currentIngredient={currentItem}/>
-      </Modal>,    
-      document.getElementById('modals')
-    )*/}
     <section className={style.BurgerIngredients + ' mr-5'}>
         <span className={style.BurgerIngredientsTitle + ' mt-10 mb-5 text text_type_main-large'}>Собери бургер</span>        
         <Tabs Scroling={Filtered}/>

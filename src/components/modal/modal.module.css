@@ -25,23 +25,6 @@
     height: 88px;
     width: 100%;
 }
-/*.modalWindowHeaderNoCaption {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-Items: start;
-    height: 88px;
-    width: 100%;
-}
-.modalWindowHeaderCaption{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}*/
-
-
 .modalWindowContent{
     display: flex;
     flex-direction: column;

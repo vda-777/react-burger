@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     min-width: 50%;
-    /*max-width: 48%;*/
 }
 .BurgerIngredientsTitle{
     display: flex;
@@ -15,15 +14,11 @@
     flex-wrap: wrap;
     justify-content: center;
     overflow-y: scroll;
-    /*min-width: 586px;*/
 }
 .BurgerIngredientsElement{
     list-style-type: none;
     max-width: 250px;
-    /*min-width: 250px;
-    max-height: 208px;
-    min-height: 208px;*/
-    
+   
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,7 +26,6 @@
 .BurgerIngredientsElementCounter{
     position: relative;
     display: flex;
-    /*align-self: flex-end;*/
 }
 .BurgerIngredientsElementImage{
     display: flex;
@@ -43,14 +37,5 @@
 }
 .BurgerIngredientsElementCaption{
     display: flex;
-    /*justify-content: space-between;*/
-    /*align-self: center;*/
     text-align: center;
 }
-/*.modalWindowHeaderCaption{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}*/

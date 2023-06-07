@@ -1,4 +1,3 @@
-//import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
 import OkIcon from '../../image/ok-icon.svg';
 import style from './order-details.module.css';

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export function NavigationButton(props) {
   return (    
         <div className={props.navigationButtonClass}>
-            <a href='#' > {/*onclick='null'*/}
+            <a href='#' >
                 {
                     props.icon      === 'BurgerIcon'    ? <BurgerIcon   type={props.type} />
                     : props.icon    === 'ListIcon'      ? <ListIcon     type={props.type} />
