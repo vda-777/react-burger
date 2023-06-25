@@ -12,7 +12,7 @@ const orderSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(sendOrder.pending, (state, action) => {
+            .addCase(sendOrder.pending, (state) => {
                 state.order = null;
                 state.sending = true;
                 state.error = null;                

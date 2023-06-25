@@ -1,29 +1,27 @@
-import {useState} from 'react'
-import React from 'react'
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import PropTypes from 'prop-types';
 import style from './burger-ingredients-tabs.module.css'
 
 
 export const Tabs = (props) => {
-    const [current, setCurrent] = useState('Булки')    
     return (
         <>            
             <div className={style.BurgerIngredientsTabs}>
-                <Tab value="Булки" active={current === 'Булки'} onClick={()=>{props.Scroling('bun'); setCurrent('Булки');}}>
+                <Tab value="Булки" active={props.activeTab === 'bun'} onClick={()=>{props.clickTab('bun');}}>
                     Булки
                 </Tab>
-                <Tab value="Соус" active={current === 'Соус'} onClick={()=>{props.Scroling('sauce'); setCurrent('Соус');}}>
+                <Tab value="Соус" active={props.activeTab === 'sauce'} onClick={()=>{props.clickTab('sauce');}}>
                     Соус
                 </Tab>
-                <Tab value="Начинки" active={current === 'Начинки'} onClick={()=>{props.Scroling('main'); setCurrent('Начинки');}}>
+                <Tab value="Начинки" active={props.activeTab === 'main'} onClick={()=>{props.clickTab('main');}}>
                     Начинки
                 </Tab>
             </div>
-            <span className='mt-10 mb-6 text text_type_main-medium'>{current}</span>
+            <span className='mt-10 mb-6 text text_type_main-medium'>{props.activeTab}</span>
         </>
     )
 }
 Tabs.protoTypes={
-    Scroling: PropTypes.func
+    TabClick: PropTypes.func.isRequired,
+    activeTab: PropTypes.string.isRequired
 }

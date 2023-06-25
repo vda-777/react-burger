@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {v4 as uuidv4} from "uuid";
-//import { getBurgerIngredients} from '../action/burger-ingredients';
 
 export const burgerConstructionSlice = createSlice({
     name: 'burgerConstructor',
@@ -36,16 +35,9 @@ export const burgerConstructionSlice = createSlice({
                 state.ingredients = state.ingredients.filter((task) => task.uuid !== action.payload);
             }
         },
-        /*UpdateIngredient: {
-            reducer:(state, action) => {
-                return action.payload;
-            }            
-        },*/
         ReorderIngredient: {
             reducer:(state, action) => {
                 const { hoverIndex, dragIndex } = action.payload;
-                console.log(hoverIndex, dragIndex);
-                console.log(action.payload);
                 const IngredientsCopy = [...state.ingredients];
                 const [removed] = IngredientsCopy.splice(dragIndex, 1);
                 IngredientsCopy.splice(hoverIndex, 0, removed);
