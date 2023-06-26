@@ -11,18 +11,18 @@ const burgerIngredientsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getBurgerIngredients.pending, (state) => {
-                state.burgerIngredients = null;
+                state.burgerIngredients = [];
                 state.loadingBurgerIngredients = true;
                 state.errorLoadingBurgerIngredients = null;
             })
             .addCase(getBurgerIngredients.rejected, (state, action) => {
-                state.burgerIngredients = null;
-                state.loadingBurgerIngredients = false;
+                state.burgerIngredients = [];
+                state.loadingBurgerIngredients = null;
                 state.errorLoadingBurgerIngredients = action.payload || 'Failed to fetch data';
             })
             .addCase(getBurgerIngredients.fulfilled, (state, action) => {
                 state.burgerIngredients = action.payload;
-                state.loadingBurgerIngredients = false;
+                state.loadingBurgerIngredients = null;
                 state.errorLoadingBurgerIngredients = null;
                 // прошу не обращать внимания на этот комментарий, оставил его для себя
                 //burgerIngredients: action.payload.map((item) => {return {...item, count: 0/*, uuid: uuidv4()*/}}),

@@ -13,19 +13,19 @@ const orderSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(sendOrder.pending, (state) => {
-                state.order = null;
+                state.order = [];
                 state.sending = true;
                 state.error = null;                
             })
             .addCase(sendOrder.rejected, (state, action) => {
-                state.order = null;
-                state.sending = false;
+                state.order = [];
+                state.sending = null;
                 state.error = action.payload || 'Failed to fetch data';
             })
             .addCase(sendOrder.fulfilled, (state, action) => {
                 state.order = action.payload;
-                state.sending = false;
-                state.error = null
+                state.sending = null;
+                state.error = null;
             })
     }
 });

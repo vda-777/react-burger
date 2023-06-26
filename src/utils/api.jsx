@@ -7,15 +7,17 @@ const getResponse = (response) => {
     }
     return Promise.reject(`Ошибка HTTP: статус - ${response.status} описание - ${response.statusText}`);
 };
-export const get = () => {
-    return fetch(`${ApiConfig.baseUrl}/ingredients`).then(getResponse);
+export const getIngredients = async () => {
+    const response = await fetch(`${ApiConfig.baseUrl}/ingredients`);
+    return getResponse(response);
 };
-export const post = (data) => {
-    return fetch(`${ApiConfig.baseUrl}/orders`, {
+export const createOrder = async (data) => {
+    const response = await fetch(`${ApiConfig.baseUrl}/orders`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-    }).then(getResponse);
+    });
+    return getResponse(response);
 };

@@ -72,7 +72,7 @@ export default function BurgerConstructor() {
       },[ingredients]
     );
 
-    let sumData = useMemo(
+    const sumData = useMemo(
       () => {
         return (isEmpty(bun) ? 
           (isEmpty(ingredients) ? 0 : ingredients.reduce((sum, item) => sum + item.price, 0)) : 
