@@ -28,5 +28,5 @@ export default function OrderDetails(props) {
 }
 
 OrderDetails.propTypes={
-  numberOrder: PropTypes.string.isRequired
+  numberOrder: PropTypes.number.isRequired
 }

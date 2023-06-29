@@ -9,8 +9,14 @@
     flex-direction: column;
     overflow: hidden;
 }
-.burgerConstructorElementsTopBottom{
+.burgerConstructorElementsTop{
     align-self: flex-end;
+}
+.burgerConstructorElementsBottom{
+    align-self: flex-end;
+}
+.burgerConstructorElementsBottom img{
+    transform: rotate(180deg);
 }
 .burgerConstructorElementsSection{
     display: flex;

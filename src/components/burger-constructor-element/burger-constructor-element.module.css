@@ -1,0 +1,7 @@
+.burgerConstructorElement{
+    display: flex;
+    gap: 10px;
+}
+.burgerConstructorElementIcon{
+    align-self: center;
+}
